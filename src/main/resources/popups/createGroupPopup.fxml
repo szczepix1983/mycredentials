@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="229.0" prefWidth="400.0" style="-fx-background-color: #2D3447;" type="AnchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Separator layoutX="18.0" layoutY="49.0" opacity="0.5" prefHeight="3.0" prefWidth="365.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
+      <Button fx:id="closeButton" alignment="CENTER" layoutX="124.0" layoutY="181.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #2196f3;" text="Close" textFill="#fcf9f9" />
+      <Label fx:id="titleLabel" contentDisplay="CENTER" layoutX="20.0" layoutY="17.0" mouseTransparent="true" text="Create group" textFill="#fcfcfc">
+         <font>
+            <Font name="Apple Symbols" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="saveButton" alignment="CENTER" layoutX="206.0" layoutY="181.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #2196f3;" text="Save" textFill="#fcf9f9" />
+      <ColorPicker fx:id="colorPicker" editable="true" layoutX="235.0" layoutY="71.0" promptText="Color" style="-fx-background-color-fx-background-color: #2196f3 #2196f3; -fx-text-fill-fx-text-fill: #ffffff;" />
+      <Text fill="#a0a2ab" layoutX="36.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter group name and pick up the color." textAlignment="CENTER" wrappingWidth="332.0" />
+      <Text fill="#2196f3" layoutX="18.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group name" />
+      <TextField fx:id="nameText" alignment="CENTER" layoutX="99.0" layoutY="71.0" prefHeight="27.0" prefWidth="127.0" style="-fx-background-color: #2196f3; -fx-text-fill: #ffffff;" />
+      <Text fill="#a0a2ab" layoutX="44.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preview:" textAlignment="CENTER" wrappingWidth="87.0" />
+      <AnchorPane fx:id="container" layoutX="126.0" layoutY="143.0" prefHeight="28.0" prefWidth="256.0" />
+   </children>
+</fx:root>
