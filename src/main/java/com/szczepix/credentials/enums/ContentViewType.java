@@ -9,6 +9,7 @@ public enum ContentViewType {
     PROFILE("Profile", "profile.fxml"),
     GROUPS("Groups", "groups.fxml"),
     LOGINS("Logins", "logins.fxml"),
+    ACCOUNTS("Accounts", "accounts.fxml"),
     SETTINGS("Settings", "settings.fxml");
 
     String title;

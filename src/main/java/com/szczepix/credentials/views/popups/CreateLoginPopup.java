@@ -6,6 +6,7 @@ import com.szczepix.credentials.managers.IStageManager;
 import com.szczepix.credentials.services.groupService.IGroupService;
 import com.szczepix.credentials.services.loginService.ILoginService;
 import com.szczepix.credentials.utils.Utils;
+import com.szczepix.credentials.views.components.LoginComponent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.HashMap;
 import java.util.stream.Collectors;
 
 public class CreateLoginPopup extends BasePopupView {
@@ -35,6 +37,10 @@ public class CreateLoginPopup extends BasePopupView {
 
     private final IGroupService groupService;
 
+    private LoginComponent loginComponent;
+
+    private HashMap<String, GroupEntity> groupNameToEntity = new HashMap<>();
+
     public CreateLoginPopup(final IStageManager stageManager, final ILoginService loginService, final IGroupService groupService) {
         super(stageManager, PopupViewType.CREATE_LOGIN);
         this.loginService = loginService;
@@ -49,27 +55,34 @@ public class CreateLoginPopup extends BasePopupView {
         titleLabel.setText(PopupViewType.CREATE_LOGIN.getTitle());
 
         emailText.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue.length() < Utils.GROUP_NAME_MAX_LENGHT){
-
+            if(newValue.length() < Utils.LOGIN_NAME_MAX_LENGHT){
+                loginComponent.setText(newValue);
             } else {
                 emailText.setText(oldValue);
             }
         });
 
-        ObservableList<String> list = groupService.getEntities().stream().map(GroupEntity::getName).collect(Collectors.toCollection(FXCollections::observableArrayList));
+        ObservableList<String> list = groupService.getEntities().stream()
+                .peek(entity -> groupNameToEntity.put(entity.getName(), entity))
+                .map(GroupEntity::getName)
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         listView.setItems(list);
         listView.setOnMouseClicked(this::onSelectionChange);
+
+        loginComponent = new LoginComponent();
+        container.getChildren().add(loginComponent);
     }
 
     private void onSelectionChange(MouseEvent event) {
         ObservableList<String> selectedItems =  listView.getSelectionModel().getSelectedItems();
 
-        for(String s : selectedItems){
-            System.out.println("selected item " + s);
-        }
-
+        loginComponent.setGroups(
+                selectedItems.stream()
+                        .map(item -> groupNameToEntity.get(item))
+                        .collect(Collectors.toList())
+        );
     }
 
     private void onCloseButton(ActionEvent event) {
@@ -77,12 +90,12 @@ public class CreateLoginPopup extends BasePopupView {
     }
 
     private void onSaveButton(ActionEvent event) {
-//        if(groupComponent.isValid()){
-//            loginService.save();
-//            close();
-//            new InfoPopup(stageManager, "New group with name #"+ groupComponent.getEntity().getName() +" has been added properly.");
-//        } else {
-//            new InfoPopup(stageManager, "The name for a group is invalid.");
-//        }
+        if(loginComponent.isValid()){
+            loginService.save(loginComponent.getEntity());
+            close();
+            new InfoPopup(stageManager, "New login with name #"+ loginComponent.getEntity().getEmail() +" has been added properly.");
+        } else {
+            new InfoPopup(stageManager, "The login is invalid. Try to put some more letters");
+        }
     }
 }

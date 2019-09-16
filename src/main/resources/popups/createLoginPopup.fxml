@@ -9,21 +9,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="415.0" prefWidth="400.0" style="-fx-background-color: #2D3447;" type="AnchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="400.0" style="-fx-background-color: #2D3447;" type="AnchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Separator layoutX="18.0" layoutY="49.0" opacity="0.5" prefHeight="3.0" prefWidth="365.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
-      <Button fx:id="closeButton" alignment="CENTER" layoutX="124.0" layoutY="368.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #2196f3;" text="Close" textFill="#fcf9f9" />
+      <Button fx:id="closeButton" alignment="CENTER" layoutX="124.0" layoutY="392.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #2196f3;" text="Close" textFill="#fcf9f9" />
       <Label fx:id="titleLabel" contentDisplay="CENTER" layoutX="20.0" layoutY="17.0" mouseTransparent="true" text="Create login" textFill="#fcfcfc">
          <font>
             <Font name="Apple Symbols" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="saveButton" alignment="CENTER" layoutX="206.0" layoutY="368.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #2196f3;" text="Save" textFill="#fcf9f9" />
+      <Button fx:id="saveButton" alignment="CENTER" layoutX="206.0" layoutY="392.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #2196f3;" text="Save" textFill="#fcf9f9" />
       <Text fill="#a0a2ab" layoutX="37.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select the groups that login may be used for." textAlignment="CENTER" wrappingWidth="332.0" />
-      <Text fill="#2196f3" layoutX="18.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E-mail" />
+      <Text fill="#2196f3" layoutX="24.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" />
       <TextField fx:id="emailText" alignment="CENTER" layoutX="65.0" layoutY="71.0" prefHeight="27.0" prefWidth="318.0" style="-fx-background-color: #2196f3; -fx-text-fill: #ffffff;" />
-      <Text fill="#a0a2ab" layoutX="45.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preview:" textAlignment="CENTER" wrappingWidth="87.0" />
-      <AnchorPane fx:id="container" layoutX="127.0" layoutY="330.0" prefHeight="28.0" prefWidth="256.0" />
+      <Text fill="#a0a2ab" layoutX="45.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Preview:" textAlignment="CENTER" wrappingWidth="87.0" />
+      <AnchorPane fx:id="container" layoutX="127.0" layoutY="341.0" prefHeight="28.0" prefWidth="256.0" />
       <ListView fx:id="listView" layoutX="65.0" layoutY="139.0" prefHeight="186.0" prefWidth="318.0" style="-fx-background-color-fx-background-color: #2196f3 #2196f3;" />
       <Text fill="#2196f3" layoutX="12.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Groups" />
    </children>

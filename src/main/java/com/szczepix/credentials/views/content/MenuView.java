@@ -24,6 +24,8 @@ public class MenuView extends FXMLView {
     @FXML
     public Button loginsButton;
     @FXML
+    public Button accountsButton;
+    @FXML
     public Button licenseButton;
 
     @Override
@@ -31,6 +33,7 @@ public class MenuView extends FXMLView {
         enableButton(profileButton, this::handleProfileButton);
         enableButton(groupsButton, this::handleGroupsButton);
         enableButton(loginsButton, this::handleLoginsButton);
+        enableButton(accountsButton, this::handleAccountsButton);
         enableButton(settingsButton, this::handleSettingsButton);
         enableButton(licenseButton, this::handleOpenLicense);
     }
@@ -50,6 +53,10 @@ public class MenuView extends FXMLView {
 
     protected void handleLoginsButton(ActionEvent actionEvent) {
         stageManager.show(ContentViewType.LOGINS, stageManager.getView().contentPane);
+    }
+
+    protected void handleAccountsButton(ActionEvent actionEvent) {
+        stageManager.show(ContentViewType.ACCOUNTS, stageManager.getView().contentPane);
     }
 
     protected void handleSettingsButton(ActionEvent actionEvent) {

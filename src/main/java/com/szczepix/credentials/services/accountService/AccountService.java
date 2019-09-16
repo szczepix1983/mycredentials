@@ -1,8 +1,8 @@
-package com.szczepix.credentials.services.loginService;
+package com.szczepix.credentials.services.accountService;
 
-import com.szczepix.credentials.dao.ILoginRepository;
-import com.szczepix.credentials.entities.LoginEntity;
-import com.szczepix.credentials.events.LoginsChangeEvent;
+import com.szczepix.credentials.dao.IAccountRepository;
+import com.szczepix.credentials.entities.AccountEntity;
+import com.szczepix.credentials.events.AccountsChangeEvent;
 import com.szczepix.credentials.services.eventService.IEventSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,26 +16,26 @@ import java.util.stream.StreamSupport;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-public class LoginService implements ILoginService {
+public class AccountService implements IAccountService {
 
-    private final ILoginRepository repository;
+    private final IAccountRepository repository;
 
     private final IEventSerivce eventSerivce;
 
     @Autowired
-    public LoginService(final ILoginRepository repository, @Qualifier("eventService") final IEventSerivce eventSerivce) {
+    public AccountService(final IAccountRepository repository, @Qualifier("eventService") final IEventSerivce eventSerivce) {
         this.repository = repository;
         this.eventSerivce = eventSerivce;
     }
 
     @Override
-    public List<LoginEntity> getEntities() {
+    public List<AccountEntity> getEntities() {
         return StreamSupport.stream(repository.findAll().spliterator(), false).collect(Collectors.toList());
     }
 
     @Override
-    public void save(LoginEntity entity) {
-        this.repository.save(entity);
-        this.eventSerivce.dispatch(new LoginsChangeEvent());
+    public void save(final AccountEntity entity) {
+        repository.save(entity);
+        eventSerivce.dispatch(new AccountsChangeEvent());
     }
 }

@@ -3,6 +3,7 @@ package com.szczepix.credentials.services.groupService;
 import com.szczepix.credentials.dao.IGroupRepository;
 import com.szczepix.credentials.entities.GroupEntity;
 import com.szczepix.credentials.entities.GroupEntityTest;
+import com.szczepix.credentials.events.GroupsChangeEvent;
 import com.szczepix.credentials.services.eventService.IEventSerivce;
 import org.junit.After;
 import org.junit.Test;
@@ -29,6 +30,9 @@ public class GroupServiceTest {
     private IGroupService groupService;
 
     @Autowired
+    private IEventSerivce eventService;
+
+    @Autowired
     private IGroupRepository repository;
 
     @After
@@ -47,6 +51,7 @@ public class GroupServiceTest {
         GroupEntity entity = new GroupEntityTest.GroupEntityMock(1);
         groupService.save(entity);
         verify(repository, times(1)).save(eq(entity));
+        verify(eventService, times(1)).dispatch(any(GroupsChangeEvent.class));
     }
 
     @Configuration

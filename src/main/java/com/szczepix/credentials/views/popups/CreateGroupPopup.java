@@ -72,7 +72,7 @@ public class CreateGroupPopup extends BasePopupView {
             close();
             new InfoPopup(stageManager, "New group with name #"+ groupComponent.getEntity().getName() +" has been added properly.");
         } else {
-            new InfoPopup(stageManager, "The name for a group is invalid.");
+            new InfoPopup(stageManager, "The name for a group is invalid. Try to put some more letters");
         }
     }
 }
