@@ -1,5 +1,6 @@
 package com.szczepix.credentials.views.content;
 
+import com.szczepix.credentials.Application;
 import com.szczepix.credentials.enums.ContentViewType;
 import com.szczepix.credentials.views.FXMLView;
 import javafx.event.ActionEvent;
@@ -7,8 +8,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import org.springframework.stereotype.Component;
 
-import java.awt.*;
-import java.net.URI;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -65,7 +64,7 @@ public class MenuView extends FXMLView {
 
     protected void handleOpenLicense(ActionEvent actionEvent) {
         try {
-            Desktop.getDesktop().browse(new URI("https://github.com/szczepix1983/MyCredentials/blob/master/LICENSE"));
+            Application.HOST_SERVICE.showDocument("https://github.com/szczepix1983/MyCredentials/blob/master/LICENSE");
         } catch (Exception e) {
             e.printStackTrace();
         }
