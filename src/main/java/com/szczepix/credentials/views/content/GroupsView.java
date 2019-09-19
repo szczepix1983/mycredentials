@@ -6,13 +6,17 @@ import com.szczepix.credentials.services.eventService.BaseEvent;
 import com.szczepix.credentials.services.eventService.IEventSerivce;
 import com.szczepix.credentials.services.groupService.IGroupService;
 import com.szczepix.credentials.views.FXMLView;
-import com.szczepix.credentials.views.components.GroupComponent;
+import com.szczepix.credentials.views.components.GroupTableItem;
 import com.szczepix.credentials.views.popups.CreateGroupPopup;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -20,6 +24,7 @@ import org.springframework.stereotype.Component;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 @Component
 public class GroupsView extends FXMLView {
@@ -29,7 +34,7 @@ public class GroupsView extends FXMLView {
     @FXML
     public Button createButton;
     @FXML
-    public GridPane gridPane;
+    public TableView<GroupTableItem> table;
 
     @Autowired
     private IGroupService groupService;
@@ -41,6 +46,19 @@ public class GroupsView extends FXMLView {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         enableButton(createButton, this::onCreateButton);
+
+        TableColumn nameCol = new TableColumn("Name");
+        nameCol.setMinWidth(100);
+        nameCol.setCellValueFactory(
+                new PropertyValueFactory<GroupTableItem, String>("name"));
+
+        TableColumn colorCol = new TableColumn("Color");
+        colorCol.setMinWidth(100);
+        colorCol.setCellValueFactory(
+                new PropertyValueFactory<GroupTableItem, String>("color"));
+
+
+        table.getColumns().addAll(nameCol, colorCol);
 
         eventSerivce.addListener(BaseEventType.GROUPS_CHANGE, this::onGroupsChange);
 
@@ -60,14 +78,11 @@ public class GroupsView extends FXMLView {
         totalText.setText(getTotal());
 
         List<GroupEntity> entities = groupService.getEntities();
-        for (int i = 0; i < entities.size(); i++) {
-            GroupEntity groupEntity = entities.get(i);
-            try {
-                gridPane.add(new GroupComponent(groupEntity), 0, i);
-            } catch (Exception e) {
-                System.out.println("eeee: " + e);
-            }
-        }
+        final ObservableList<GroupTableItem> data = entities.stream()
+                .map(GroupTableItem::create)
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+
+        table.setItems(data);
     }
 
     private void onCreateButton(ActionEvent event) {
