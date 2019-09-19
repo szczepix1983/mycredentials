@@ -1,10 +1,12 @@
 package com.szczepix.credentials.views.content;
 
+import com.szczepix.credentials.entities.GroupEntity;
 import com.szczepix.credentials.enums.BaseEventType;
 import com.szczepix.credentials.services.eventService.BaseEvent;
 import com.szczepix.credentials.services.eventService.IEventSerivce;
 import com.szczepix.credentials.services.groupService.IGroupService;
 import com.szczepix.credentials.views.FXMLView;
+import com.szczepix.credentials.views.components.GroupComponent;
 import com.szczepix.credentials.views.popups.CreateGroupPopup;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
@@ -56,15 +59,15 @@ public class GroupsView extends FXMLView {
     private void fillContent() {
         totalText.setText(getTotal());
 
-//        List<WalletModel> wallets = walletService.getWallets();
-//        for (int i = 0; i < wallets.size(); i++) {
-//            WalletModel walletModel = wallets.get(i);
-//            try {
-//                gridPane.add(new WalletItemComponent(walletModel, eventService, settingService.getSettings().getEntity().getCurrency()).load(), 0, i);
-//            } catch (Exception e) {
-//                System.out.println("eeee: " + e);
-//            }
-//        }
+        List<GroupEntity> entities = groupService.getEntities();
+        for (int i = 0; i < entities.size(); i++) {
+            GroupEntity groupEntity = entities.get(i);
+            try {
+                gridPane.add(new GroupComponent(groupEntity), 0, i);
+            } catch (Exception e) {
+                System.out.println("eeee: " + e);
+            }
+        }
     }
 
     private void onCreateButton(ActionEvent event) {

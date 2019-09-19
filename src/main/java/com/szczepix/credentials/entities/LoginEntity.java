@@ -16,7 +16,7 @@ public class LoginEntity extends BaseEntity {
 
     private String email;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<GroupEntity> groups;
 
 

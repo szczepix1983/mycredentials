@@ -5,6 +5,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+import java.util.Objects;
+
 
 public class GroupComponent extends VBox {
 
@@ -25,8 +27,8 @@ public class GroupComponent extends VBox {
 
         this.getChildren().add(textField);
 
-        setText("");
-        setColor(Color.WHITE);
+        setColor(Objects.nonNull(entity.getColor()) ? Color.valueOf(entity.getColor()) : Color.WHITE);
+        setText(Objects.nonNull(entity.getName()) ? entity.getName() : "");
     }
 
     public void setText(final String value){
