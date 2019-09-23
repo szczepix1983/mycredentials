@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="323.0" prefWidth="400.0" style="-fx-background-color: #2D3447;" type="AnchorPane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Separator layoutX="18.0" layoutY="49.0" opacity="0.5" prefHeight="3.0" prefWidth="365.0" style="-fx-background-color: #a0a2ab#a0a2ab;" />
+      <ComboBox fx:id="loginCombobox" layoutX="67.0" layoutY="139.0" prefHeight="27.0" prefWidth="150.0" promptText="Select" style="-fx-background-color: #2196f3; -fx-text-fill: #ffffff;" />
+      <Button fx:id="closeButton" alignment="CENTER" layoutX="124.0" layoutY="273.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #2196f3;" text="Close" textFill="#fcf9f9" />
+      <Label fx:id="titleLabel" contentDisplay="CENTER" layoutX="20.0" layoutY="17.0" mouseTransparent="true" text="Create account" textFill="#fcfcfc">
+         <font>
+            <Font name="Apple Symbols" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="saveButton" alignment="CENTER" layoutX="206.0" layoutY="273.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #2196f3;" text="Save" textFill="#fcf9f9" />
+      <Text fill="#a0a2ab" layoutX="37.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a login that may be used for account." textAlignment="CENTER" wrappingWidth="332.0" />
+      <Text fill="#2196f3" layoutX="16.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
+      <TextField fx:id="nameText" alignment="CENTER" layoutX="65.0" layoutY="71.0" prefHeight="27.0" prefWidth="318.0" style="-fx-background-color: #2196f3; -fx-text-fill: #ffffff;" />
+      <Text fill="#2196f3" layoutX="17.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login:" />
+      <Text fill="#2196f3" layoutX="2.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Website:" />
+      <TextField fx:id="websiteText" alignment="CENTER" layoutX="66.0" layoutY="184.0" prefHeight="27.0" prefWidth="318.0" style="-fx-background-color: #2196f3; -fx-text-fill: #ffffff;" />
+      <Text fill="#2196f3" layoutX="-7.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
+      <TextField fx:id="passwordText" alignment="CENTER" layoutX="67.0" layoutY="228.0" prefHeight="27.0" prefWidth="318.0" style="-fx-background-color: #2196f3; -fx-text-fill: #ffffff;" />
+   </children>
+</fx:root>

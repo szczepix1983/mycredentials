@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -47,18 +48,7 @@ public class GroupsView extends FXMLView {
     public void initialize(URL location, ResourceBundle resources) {
         enableButton(createButton, this::onCreateButton);
 
-        TableColumn nameCol = new TableColumn("Name");
-        nameCol.setMinWidth(100);
-        nameCol.setCellValueFactory(
-                new PropertyValueFactory<GroupTableItem, String>("name"));
-
-        TableColumn colorCol = new TableColumn("Color");
-        colorCol.setMinWidth(100);
-        colorCol.setCellValueFactory(
-                new PropertyValueFactory<GroupTableItem, String>("color"));
-
-
-        table.getColumns().addAll(nameCol, colorCol);
+        createColumns(Arrays.asList("name", "color"));
 
         eventSerivce.addListener(BaseEventType.GROUPS_CHANGE, this::onGroupsChange);
 
@@ -72,6 +62,16 @@ public class GroupsView extends FXMLView {
 
     public void onGroupsChange(BaseEvent baseEvent) {
         fillContent();
+    }
+
+    private void createColumns(final List<String> columnNames){
+        columnNames.stream()
+                .map(name -> {
+            TableColumn column = new TableColumn(name);
+            column.setMinWidth(100);
+            column.setCellValueFactory(new PropertyValueFactory<GroupTableItem, String>(name));
+            return column;
+        }).forEach(table.getColumns()::add);
     }
 
     private void fillContent() {
