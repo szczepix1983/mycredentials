@@ -7,7 +7,7 @@ public class LoginTableItem {
     private final SimpleStringProperty login;
 
     public static LoginTableItem create(final LoginEntity entity){
-        return new LoginTableItem(entity.getEmail());
+        return new LoginTableItem(entity.getLogin());
     }
 
     private LoginTableItem(final String login) {

@@ -93,7 +93,7 @@ public class CreateLoginPopup extends BasePopupView {
         if(loginComponent.isValid()){
             loginService.save(loginComponent.getEntity());
             close();
-            new InfoPopup(stageManager, "New login with name #"+ loginComponent.getEntity().getEmail() +" has been added properly.");
+            new InfoPopup(stageManager, "New login with name #"+ loginComponent.getEntity().getLogin() +" has been added properly.");
         } else {
             new InfoPopup(stageManager, "The login is invalid. Try to put some more letters");
         }

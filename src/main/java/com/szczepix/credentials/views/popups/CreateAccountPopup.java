@@ -64,8 +64,8 @@ public class CreateAccountPopup extends BasePopupView {
         });
 
         ObservableList<String> list = loginService.getEntities().stream()
-                .peek(entity -> loginNameToEntity.put(entity.getEmail(), entity))
-                .map(LoginEntity::getEmail)
+                .peek(entity -> loginNameToEntity.put(entity.getLogin(), entity))
+                .map(LoginEntity::getLogin)
                 .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         loginCombobox.getItems().addAll(list);

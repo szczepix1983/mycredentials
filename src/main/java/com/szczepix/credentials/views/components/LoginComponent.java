@@ -34,14 +34,14 @@ public class LoginComponent extends VBox {
         this.getChildren().add(textField);
         this.getChildren().add(container);
 
-        setText(Objects.nonNull(entity.getEmail()) ? entity.getEmail() : "");
+        setText(Objects.nonNull(entity.getLogin()) ? entity.getLogin() : "");
         setGroups(Objects.nonNull(entity.getGroups()) ? entity.getGroups() : new ArrayList<>());
     }
 
     public void setText(final String value){
         this.textField.setText("#" + value);
         this.textField.setPrefWidth(18 + (this.textField.getText().length() * 9));
-        entity.setEmail(value);
+        entity.setLogin(value);
     }
 
     public void setGroups(final List<GroupEntity> groups) {
@@ -60,6 +60,6 @@ public class LoginComponent extends VBox {
     }
 
     public boolean isValid() {
-        return !entity.getEmail().isEmpty();
+        return !entity.getLogin().isEmpty();
     }
 }

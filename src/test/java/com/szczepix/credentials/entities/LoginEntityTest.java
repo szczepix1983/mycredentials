@@ -25,7 +25,7 @@ public class LoginEntityTest {
 
     @Test
     public void getEmail() {
-        assertThat(profileEntity.getEmail()).isEqualTo("email");
+        assertThat(profileEntity.getLogin()).isEqualTo("login");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class LoginEntityTest {
     public void checkIsEqual() {
         LoginEntity anotherEntity = new LoginEntity();
         anotherEntity.setId(1);
-        anotherEntity.setEmail("email");
+        anotherEntity.setLogin("login");
         anotherEntity.setGroups(Lists.emptyList());
         assertThat(anotherEntity.equals(profileEntity)).isTrue();
     }
@@ -51,7 +51,7 @@ public class LoginEntityTest {
     public void checkIsNotEqual() {
         LoginEntity anotherEntity = new LoginEntity();
         anotherEntity.setId(1);
-        anotherEntity.setEmail("email2");
+        anotherEntity.setLogin("login");
         anotherEntity.setGroups(Lists.emptyList());
         assertThat(anotherEntity.equals(profileEntity)).isFalse();
     }
@@ -60,7 +60,7 @@ public class LoginEntityTest {
 
         public LoginEntityMock(final int id) {
             setId(id);
-            setEmail("email");
+            setLogin("login");
             setGroups(Lists.emptyList());
         }
     }

@@ -14,7 +14,7 @@ public class LoginEntity extends BaseEntity {
     @GeneratedValue
     private int id;
 
-    private String email;
+    private String login;
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<GroupEntity> groups;
@@ -23,11 +23,11 @@ public class LoginEntity extends BaseEntity {
     @Override
     public boolean equals(Object obj) {
         LoginEntity entity = (LoginEntity) obj;
-        return super.equals(obj) || (getId() == entity.getId() && email.equals(entity.getEmail()));
+        return super.equals(obj) || (getId() == entity.getId() && login.equals(entity.getLogin()));
     }
 
     @Override
     public String toString() {
-        return print(id, email);
+        return print(id, login);
     }
 }
